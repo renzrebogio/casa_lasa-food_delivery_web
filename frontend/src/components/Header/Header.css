@@ -1,0 +1,129 @@
+/* Import elegant serif font */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500&display=swap");
+
+.header {
+  height: 34vw;
+  margin: 30px auto;
+  background: url("header.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Add subtle overlay for better text readability */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(84, 32, 32, 0.3) 0%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  pointer-events: none;
+}
+
+.header-contents {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1.8vw;
+  max-width: 55%;
+  bottom: 12%;
+  left: 5vw;
+  animation: fadeIn 3s;
+  z-index: 2;
+}
+
+.header-contents h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  color: hsl(40, 20%, 96%);
+  font-size: max(4.2vw, 24px);
+  line-height: 1.2;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+.header-contents p {
+  font-family: "Inter", sans-serif;
+  color: hsl(40, 20%, 96%);
+  font-size: max(1.1vw, 14px);
+  line-height: 1.6;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+  opacity: 0.95;
+}
+
+.header-contents button {
+  border: 2px solid hsl(45, 80%, 55%);
+  color: hsl(350, 60%, 30%);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  padding: max(1.2vw, 12px) max(2.8vw, 24px);
+  background: linear-gradient(
+    135deg,
+    hsl(40, 20%, 96%) 0%,
+    hsl(45, 80%, 55%) 100%
+  );
+  font-size: max(1.1vw, 14px);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.header-contents button:hover {
+  background: linear-gradient(
+    135deg,
+    hsl(45, 80%, 55%) 0%,
+    hsl(45, 90%, 60%) 100%
+  );
+  color: hsl(350, 60%, 25%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  border-color: hsl(45, 90%, 60%);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1050px) {
+  .header-contents {
+    max-width: 50%;
+    gap: 2vw;
+  }
+  .header-contents h2 {
+    font-size: max(3.8vw, 22px);
+  }
+}
+
+@media (max-width: 750px) {
+  .header-contents {
+    max-width: 70%;
+    gap: 4vw;
+  }
+  .header-contents h2 {
+    font-size: max(5vw, 20px);
+  }
+  .header-contents p {
+    display: none;
+  }
+  .header-contents button {
+    padding: 3vw 6vw;
+    font-size: max(2.5vw, 12px);
+  }
+}

@@ -1,0 +1,309 @@
+/* Import elegant fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600&display=swap");
+
+.navbar {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(
+    180deg,
+    hsl(40, 20%, 96%) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  box-shadow: 0 2px 10px rgba(84, 32, 32, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid hsl(45, 80%, 55%, 0.2);
+}
+
+.navbar .logo {
+  width: 150px;
+  filter: drop-shadow(0 2px 4px rgba(84, 32, 32, 0.1));
+  transition: transform 0.3s ease;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.05);
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 32px;
+  color: hsl(350, 60%, 30%);
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: hsl(350, 60%, 30%);
+  padding: 8px 16px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  position: relative;
+  letter-spacing: 0.3px;
+}
+
+.navbar-menu a:hover {
+  color: hsl(45, 80%, 40%);
+  background: linear-gradient(
+    135deg,
+    hsl(45, 80%, 55%, 0.1) 0%,
+    hsl(350, 60%, 30%, 0.05) 100%
+  );
+  transform: translateY(-1px);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar-right img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(40%) saturate(1234%)
+    hue-rotate(318deg) brightness(95%) contrast(89%);
+}
+
+.navbar-right img:hover {
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(55%) sepia(89%) saturate(1445%)
+    hue-rotate(25deg) brightness(104%) contrast(101%);
+}
+
+.navbar button {
+  background: linear-gradient(
+    135deg,
+    hsl(350, 60%, 30%) 0%,
+    hsl(350, 65%, 35%) 100%
+  );
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: hsl(40, 20%, 96%);
+  border: 2px solid hsl(350, 60%, 30%);
+  padding: 12px 28px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(84, 32, 32, 0.2);
+}
+
+.navbar button:hover {
+  background: linear-gradient(
+    135deg,
+    hsl(45, 80%, 55%) 0%,
+    hsl(45, 85%, 60%) 100%
+  );
+  color: hsl(350, 60%, 30%);
+  border-color: hsl(45, 80%, 55%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(84, 32, 32, 0.25);
+}
+
+.navbar .active {
+  background: linear-gradient(
+    135deg,
+    hsl(45, 80%, 55%) 0%,
+    hsl(45, 85%, 60%) 100%
+  );
+  color: hsl(350, 60%, 30%) !important;
+  border-radius: 20px;
+  padding: 8px 16px !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(210, 180, 60, 0.3);
+}
+
+.navbar li {
+  cursor: pointer;
+}
+
+.navbar-search-icon {
+  position: relative;
+}
+
+.navbar-search-icon .dot {
+  position: absolute;
+  min-width: 12px;
+  min-height: 12px;
+  background: linear-gradient(
+    135deg,
+    hsl(350, 60%, 30%) 0%,
+    hsl(350, 70%, 40%) 100%
+  );
+  border-radius: 50%;
+  top: -6px;
+  right: -6px;
+  border: 2px solid hsl(40, 20%, 96%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.navbar-profile {
+  position: relative;
+}
+
+.navbar-profile > img {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50%;
+  border: 2px solid hsl(45, 80%, 55%);
+  padding: 2px;
+}
+
+.nav-profile-dropdown {
+  position: absolute;
+  display: none;
+  right: 0;
+  z-index: 1000;
+  min-width: 180px;
+  margin-top: 8px;
+}
+
+.navbar-profile:hover .nav-profile-dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  background: linear-gradient(
+    135deg,
+    hsl(40, 20%, 96%) 0%,
+    rgba(255, 255, 255, 0.98) 100%
+  );
+  padding: 16px 0;
+  border-radius: 12px;
+  border: 1px solid hsl(45, 80%, 55%, 0.3);
+  box-shadow: 0 8px 25px rgba(84, 32, 32, 0.15);
+  list-style: none;
+  backdrop-filter: blur(10px);
+}
+
+.nav-profile-dropdown li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 12px 20px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: hsl(350, 60%, 30%);
+  transition: all 0.3s ease;
+}
+
+.nav-profile-dropdown li:hover {
+  background: linear-gradient(
+    135deg,
+    hsl(45, 80%, 55%, 0.1) 0%,
+    hsl(350, 60%, 30%, 0.05) 100%
+  );
+  color: hsl(45, 80%, 40%);
+}
+
+.nav-profile-dropdown img {
+  width: 18px !important;
+  height: 18px !important;
+  /* Wine red color for dropdown icons */
+  filter: brightness(0) saturate(100%) invert(18%) sepia(40%) saturate(1234%)
+    hue-rotate(318deg) brightness(95%) contrast(89%);
+}
+
+/* Smooth scroll behavior for home button */
+html {
+  scroll-behavior: smooth;
+}
+
+.nav-profile-dropdown hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(45, 80%, 55%, 0.3) 50%,
+    transparent 100%
+  );
+  margin: 4px 20px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1050px) {
+  .navbar .logo {
+    width: 140px;
+  }
+  .navbar-menu {
+    gap: 24px;
+    font-size: 15px;
+  }
+  .navbar-right {
+    gap: 20px;
+  }
+  .navbar-right img {
+    width: 22px;
+    height: 22px;
+  }
+  .navbar-right button {
+    padding: 10px 24px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar .logo {
+    width: 120px;
+  }
+  .navbar-menu {
+    gap: 20px;
+    font-size: 14px;
+  }
+  .navbar-right {
+    gap: 16px;
+  }
+  .navbar-right img {
+    width: 20px;
+    height: 20px;
+  }
+  .navbar-right button {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 750px) {
+  .navbar {
+    padding: 16px 20px;
+  }
+  .navbar-menu {
+    display: none;
+  }
+  .navbar-right {
+    gap: 12px;
+  }
+  .navbar .logo {
+    width: 100px;
+  }
+}

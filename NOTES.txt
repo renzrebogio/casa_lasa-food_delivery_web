@@ -1,0 +1,12 @@
+* This is my first project created using MERN (MongoDB, Express, ReactJS, NodeJS) tech stack
+* Full stack webpage (frontend, backend, database, api)
+* uses axios for http request
+* uses stripe for payment transaction
+* includes an admin panel
+* encrypts user data = secured user info
+
+
+// Future Enhancements
+* polish frontend
+* add promo code functionality
+* make web more secured??

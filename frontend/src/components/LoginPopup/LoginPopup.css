@@ -1,0 +1,211 @@
+/* Import elegant fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@400;500;600&display=swap");
+
+.login-popup {
+  position: fixed; /* Changed from absolute to fixed */
+  top: 0;
+  left: 0;
+  z-index: 10000; /* Much higher z-index to be above navbar (100) and header */
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(84, 32, 32, 0.7); /* Casa Lasa wine red overlay */
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  overflow: hidden; /* Prevent scrolling within the modal */
+}
+
+/* Prevent body scrolling when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+.login-popup-container {
+  width: max(23vw, 350px);
+  color: hsl(350, 60%, 30%);
+  background: linear-gradient(
+    135deg,
+    hsl(40, 20%, 96%) 0%,
+    rgba(255, 255, 255, 0.98) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 35px 40px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  animation: fadeInScale 0.4s ease-out;
+  box-shadow: 0 20px 60px rgba(84, 32, 32, 0.3);
+  border: 1px solid hsl(45, 80%, 55%, 0.3);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.login-popup-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.login-popup-title h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 500;
+  font-size: 28px;
+  color: hsl(350, 60%, 30%);
+  margin: 0;
+}
+
+.login-popup-title img {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(40%) saturate(1234%)
+    hue-rotate(318deg) brightness(95%) contrast(89%);
+  padding: 4px;
+  border-radius: 50%;
+}
+
+.login-popup-title img:hover {
+  background: hsl(350, 60%, 30%, 0.1);
+  transform: scale(1.1);
+  filter: brightness(0) saturate(100%) invert(73%) sepia(61%) saturate(2834%)
+    hue-rotate(25deg) brightness(104%) contrast(101%);
+}
+
+.login-popup-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-popup-inputs input {
+  outline: none;
+  border: 2px solid hsl(350, 60%, 30%, 0.2);
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: "Inter", sans-serif;
+  background: hsl(40, 20%, 96%);
+  color: hsl(350, 60%, 30%);
+  transition: all 0.3s ease;
+}
+
+.login-popup-inputs input:focus {
+  border-color: hsl(45, 80%, 55%);
+  background: white;
+  box-shadow: 0 0 0 3px hsl(45, 80%, 55%, 0.1);
+}
+
+.login-popup-inputs input::placeholder {
+  color: hsl(350, 60%, 30%, 0.6);
+}
+
+.login-popup-container button {
+  border: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  color: hsl(40, 20%, 96%);
+  background: linear-gradient(
+    135deg,
+    hsl(350, 60%, 30%) 0%,
+    hsl(350, 65%, 35%) 100%
+  );
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(84, 32, 32, 0.2);
+}
+
+.login-popup-container button:hover {
+  background: linear-gradient(
+    135deg,
+    hsl(45, 80%, 55%) 0%,
+    hsl(45, 85%, 60%) 100%
+  );
+  color: hsl(350, 60%, 30%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(84, 32, 32, 0.25);
+}
+
+.login-popup-condition {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: -10px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.login-popup-condition input {
+  margin-top: 2px;
+  width: 16px;
+  height: 16px;
+  accent-color: hsl(45, 80%, 55%);
+  cursor: pointer;
+}
+
+.login-popup-condition p {
+  color: hsl(350, 60%, 30%, 0.8);
+  margin: 0;
+}
+
+.login-popup-container > p {
+  text-align: center;
+  margin: -5px 0 0 0;
+  color: hsl(350, 60%, 30%, 0.8);
+  font-size: 14px;
+}
+
+.login-popup-container > p span {
+  color: hsl(45, 80%, 45%);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-popup-container > p span:hover {
+  color: hsl(45, 85%, 40%);
+  text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+  .login-popup-container {
+    width: 90vw;
+    padding: 25px 20px;
+    gap: 20px;
+  }
+
+  .login-popup-title h2 {
+    font-size: 24px;
+  }
+
+  .login-popup-inputs input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+
+  .login-popup-container button {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
