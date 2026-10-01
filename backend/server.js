@@ -15,7 +15,21 @@ const port = process.env.PORT || 4000
 
 //middleware
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (server-to-server, curl, etc.)
+    if (!origin) return callback(null, true);
+    // Allow all *.vercel.app domains and localhost
+    if (origin.includes('vercel.app') || origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return callback(null, true);
+    }
+    // Allow custom domains set via FRONTEND_URL
+    const allowed = process.env.FRONTEND_URL;
+    if (allowed && origin.startsWith(allowed)) return callback(null, true);
+    callback(null, true); // permissive fallback for now — lock down after testing
+  },
+  credentials: true,
+}))
 
 // Serverless DB connection middleware: guarantees DB is connected before handling requests
 app.use(async (req, res, next) => {
