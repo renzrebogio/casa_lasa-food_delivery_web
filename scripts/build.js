@@ -12,6 +12,15 @@ console.log('===> Starting Unified Production Build for Casa Lasa <===');
 
 // 1. Build frontend
 console.log('\n[1/3] Building Customer Frontend...');
+const frontendNodeModules = path.join(rootDir, 'frontend', 'node_modules');
+if (!fs.existsSync(frontendNodeModules)) {
+  console.log('  -> Installing frontend dependencies...');
+  execSync('npm install --include=dev', {
+    cwd: path.join(rootDir, 'frontend'),
+    stdio: 'inherit',
+    shell: true,
+  });
+}
 execSync('npm run build', {
   cwd: path.join(rootDir, 'frontend'),
   stdio: 'inherit',
@@ -20,6 +29,15 @@ execSync('npm run build', {
 
 // 2. Build admin
 console.log('\n[2/3] Building Admin Dashboard...');
+const adminNodeModules = path.join(rootDir, 'admin', 'node_modules');
+if (!fs.existsSync(adminNodeModules)) {
+  console.log('  -> Installing admin dependencies...');
+  execSync('npm install --include=dev', {
+    cwd: path.join(rootDir, 'admin'),
+    stdio: 'inherit',
+    shell: true,
+  });
+}
 execSync('npm run build', {
   cwd: path.join(rootDir, 'admin'),
   stdio: 'inherit',
