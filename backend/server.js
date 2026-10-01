@@ -11,27 +11,39 @@ import orderRouter from "./routes/orderRoute.js"
 
 //App Config
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000
 
 //middleware
 app.use(express.json())
 app.use(cors())
 
-// db connection
-connectDB();
+// Serverless DB connection middleware: guarantees DB is connected before handling requests
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("Database connection error:", err);
+    res.status(500).json({ success: false, message: "Database connection failed" });
+  }
+});
 
 // api endpoints
-app.use("/api/food",foodRouter)
-app.use("/images",express.static('uploads'))
-app.use("/api/user",userRouter)
-app.use("/api/cart",cartRouter)
-app.use("/api/order",orderRouter)
+app.use("/api/food", foodRouter)
+app.use("/images", express.static('uploads'))
+app.use("/api/user", userRouter)
+app.use("/api/cart", cartRouter)
+app.use("/api/order", orderRouter)
 
-
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("API Working")
 })
 
-app.listen(port, ()=>{
-    console.log(`Server Started on http://localhost:${port}`)
-})
+// Start server if run directly (local development)
+if (!process.env.VERCEL && process.env.NODE_ENV !== "production") {
+    app.listen(port, () => {
+        console.log(`Server Started on http://localhost:${port}`)
+    })
+}
+
+export default app;

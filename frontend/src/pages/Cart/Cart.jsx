@@ -26,7 +26,7 @@ const Cart = () => {
             return (
               <div>
                 <div className="cart-items-title cart-items-item">
-                  <img src={url + "/images/" + item.image} alt="" />
+                  <img src={item.image?.startsWith("http") || item.image?.startsWith("data:") ? item.image : (url ? `${url}/images/${item.image}` : `/images/${item.image}`)} alt={item.name} />
                   <p>{item.name}</p>
                   <p>₱{item.price}</p>
                   <p>{cartItems[item._id]}</p>
