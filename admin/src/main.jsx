@@ -4,8 +4,11 @@ import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter } from "react-router-dom";
 
+const rawBase = import.meta.env.BASE_URL || "/admin";
+const basename = rawBase.replace(/\/+$/, "") || "/";
+
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter basename={import.meta.env.BASE_URL}>
+  <BrowserRouter basename={basename}>
     <App />
   </BrowserRouter>
 );

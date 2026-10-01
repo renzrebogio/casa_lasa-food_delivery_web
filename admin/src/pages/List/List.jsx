@@ -7,12 +7,16 @@ const List = ({ url }) => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
-    const response = await axios.get(`${url}/api/food/list`);
-
-    if (response.data.success) {
-      setList(response.data.data);
-    } else {
-      toast.error("Error");
+    try {
+      const response = await axios.get(`${url}/api/food/list`);
+      if (response.data.success) {
+        setList(response.data.data);
+      } else {
+        toast.error(response.data.message || "Error");
+      }
+    } catch (err) {
+      console.error("Failed to fetch food list:", err);
+      toast.error(err.response?.data?.message || "Failed to load food list");
     }
   };
 
